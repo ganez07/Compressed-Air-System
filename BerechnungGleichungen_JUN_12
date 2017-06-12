@@ -1,0 +1,71 @@
+syms Z1 Z2 Z3 Z4 Z5 Z6 P1 P2 P3 P4 P5 P6 T V1 V2 V3 V4 V5 V6 Pst1 Pst2 Pst3 Pst4 Pst5 Pst6
+
+Z1= 1;
+Z2= 1;
+Z3= 1;
+Z4= 1;
+Z5= 1;
+Z6= 1;
+
+P1= 400000;
+P2= 0;
+P3= 0;
+P4= 0;
+P5= 0;
+P6= 0;
+
+Pst1= 0;
+Pst2= 0;
+Pst3= 0;
+Pst4= 0;
+Pst5= 0;
+Pst6= 0;
+
+% e= Z3*V4^2 + (Z2 + Z3 +Z5)*V5^2 + Z2*V6^2 -P2 +P3 - P5 +Pst2 -Pst3 + Pst5;
+% 
+% V5 = solve(e == 0,V5);
+% 
+% V5= V5(1)
+% d = -Z1*V4^2 + Z2*V5^2 + (Z1+ Z2 +Z6)*V6^2 -P1- P2 - P6 + Pst1 +Pst2 +Pst6 ;
+% 
+% V6 = solve(d == 0,V6);
+% V6 =V6(1)
+% 
+%  g= (Z1 +Z3 +Z4)*V4^2 + Z3*V5^2 - Z1*V6^2 + P1 + P3 - P4 -Pst1 -Pst3 + Pst4 ;
+%  V4=solve(g == 0,V4);
+%  V4 =V4(1)
+
+% V1= sqrt(-V4^2 + V6^2);
+% V2= sqrt(V5^2 + V6^2);
+% V3= sqrt(- V4^2 - V5^2);
+
+% V4 = -(P1 + P3 - P4 - (Z1*(P2*Z3 + P3*Z2 + P2*Z5 - P5*Z2 + P6*Z2 + P6*Z3 + P6*Z5 + P1*(Z2 + Z3 + Z5)))/(Z1*(Z2 + Z3 + Z5) + Z2*(Z3 + Z5 + Z6) + Z6*(Z3 + Z5)) + (Z3*(P2 - P3 + P5 - (Z2*(P2*Z3 + P3*Z2 + P2*Z5 - P5*Z2 + P6*Z2 + P6*Z3 + P6*Z5 + P1*(Z2 + Z3 + Z5)))/(Z1*(Z2 + Z3 + Z5) + Z2*(Z3 + Z5 + Z6) + Z6*(Z3 + Z5))))/(Z2 + Z3 + Z5))/(Z1 + Z3 + Z4 - (Z1*(Z1*Z2 + Z1*Z3 + 2*Z2*Z3 + Z1*Z5))/(Z1*(Z2 + Z3 + Z5) + Z2*(Z3 + Z5 + Z6) + Z6*(Z3 + Z5)) - (Z3*(Z3 + (Z2*(Z1*Z2 + Z1*Z3 + 2*Z2*Z3 + Z1*Z5))/(Z1*(Z2 + Z3 + Z5) + Z2*(Z3 + Z5 + Z6) + Z6*(Z3 + Z5))))/(Z2 + Z3 + Z5))
+
+V4 =-(P1 + P3 - P4 - Pst1 - Pst3 + Pst4 + (Z3*(P2 - P3 + P5 - Pst2 + Pst3 - Pst5 + (Z2*(P5*Z2 - P3*Z2 - P2*Z5 - P2*Z3 - P6*Z2 - P6*Z3 - P6*Z5 + Pst1*Z2 + Pst1*Z3 + Pst2*Z3 + Pst3*Z2 + Pst1*Z5 + Pst2*Z5 - Pst5*Z2 + Pst6*Z2 + Pst6*Z3 + Pst6*Z5 - P1*(Z2 + Z3 + Z5)))/(Z1*(Z2 + Z3 + Z5) + Z2*(Z3 + Z5 + Z6) + Z6*(Z3 + Z5))))/(Z2 + Z3 + Z5) + (Z1*(P5*Z2 - P3*Z2 - P2*Z5 - P2*Z3 - P6*Z2 - P6*Z3 - P6*Z5 + Pst1*Z2 + Pst1*Z3 + Pst2*Z3 + Pst3*Z2 + Pst1*Z5 + Pst2*Z5 - Pst5*Z2 + Pst6*Z2 + Pst6*Z3 + Pst6*Z5 - P1*(Z2 + Z3 + Z5)))/(Z1*(Z2 + Z3 + Z5) + Z2*(Z3 + Z5 + Z6) + Z6*(Z3 + Z5)))/(Z1 + Z3 + Z4 - (Z1*(Z1*Z2 + Z1*Z3 + Z2*Z3 + Z1*Z5))/(Z1*(Z2 + Z3 + Z5) + Z2*(Z3 + Z5 + Z6) + Z6*(Z3 + Z5)) - (Z3*(Z3 + (Z2*(Z1*Z2 + Z1*Z3 + Z2*Z3 + Z1*Z5))/(Z1*(Z2 + Z3 + Z5) + Z2*(Z3 + Z5 + Z6) + Z6*(Z3 + Z5))))/(Z2 + Z3 + Z5));
+V6 =(P1*(Z2+Z3+Z5)+ P2*Z3+P2*Z5+ P3*Z2 - P5*Z2 +P6*Z2+ P6*Z3 + P6*Z5 + V4*Z1*Z2 + V4*Z1*Z3 + V4*Z1*Z5 + V4*Z2*Z3-Pst1*Z2-Pst1*Z3-Pst1*Z5-Pst2*Z2-Pst2*Z3-Pst2*Z5-Pst6*Z2-Pst6*Z3-Pst6*Z5+Pst2*Z2-Pst3*Z2+Pst5*Z2)/ (Z1*(Z2+Z3+Z5) + Z2*(Z3+Z5+Z6) + Z6*(Z3+Z5));
+
+V5 =(-Z3*V4 - Z2*V6 + P2 - P3 + P5-Pst2 + Pst3-Pst5)/ (Z2 + Z3 + Z5);
+
+
+V1= -V4 + V6
+V2= V5 + V6
+V3 = - V4 - V5
+V4
+V5
+V6
+
+
+deltaP1= Z1*V1-P1+Pst1
+deltaP2= Z2*V2-P2+Pst2
+deltaP3= Z3*V3-P3+Pst3
+deltaP4= Z4*V4-P4+Pst4
+deltaP5= Z5*V5-P5+Pst5
+deltaP6= Z6*V6-P6+Pst6
+
+
+% ob das Ergebnis passt zu Kirchhoff's second law: Matrix_B*Matrix_deltaP=Zeros(3,1)
+B=[-1 0 -1 1 0 0;0 1 -1 0 1 0;1 1 0 0 0 1];
+
+a=-deltaP1-deltaP3+deltaP4
+b=deltaP2-deltaP3+deltaP5
+c=deltaP1+deltaP2+deltaP6
