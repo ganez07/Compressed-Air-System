@@ -44,3 +44,28 @@ rhs_end = zeros(b,1)
 r_k = [-p;rhs_middle;rhs_end] 
 
 x = linsolve(A,r_k)
+% while true
+%     
+%    x = linsolve(A,r_k)
+% 
+%     v_new = x(b+1:2*b)
+% 
+%     if  abs(v_old - v_new) <= 0.0001
+%         break;
+%     end
+%     v_old = v_new
+%     
+%     R_e = (4/pi*d*nu)*v_old
+%     
+%     if R_e < 1
+%         
+%        lambda = R_e/4
+%     else
+%         lamba = R_e
+%     end
+%        lambda_old = lambda
+%        
+%        z = lambda_old *(8*rho/pi^2)*(L/d^5)*v_old
+% end
+% 
+
